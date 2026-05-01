@@ -1,0 +1,18 @@
+# Spark binary distribution
+spark-4.0.1-bin-hadoop3/
+spark
+
+# RAPIDS JAR
+lib/
+
+# Downloaded tarballs
+*.tgz
+*.tgz.*
+
+# Spark logs/work
+*.log
+wget-log*
+results_*.csv
+
+# Python cache
+__pycache__/

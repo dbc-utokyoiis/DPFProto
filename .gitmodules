@@ -1,0 +1,19 @@
+#[submodule "cuda-samples"]
+#	path = cuda-samples
+#	url = https://github.com/NVIDIA/cuda-samples.git
+#[submodule "bam"]
+#	path = bam
+#	url = https://github.com/ZaidQureshi/bam.git
+[submodule "cuda-samples"]
+	path = cuda-samples
+	url = https://github.com/NVIDIA/cuda-samples.git
+[submodule "bam"]
+	path = bam
+	url = https://github.com/ZaidQureshi/bam.git
+[submodule "fsst"]
+	path = fsst
+	url = https://github.com/cwida/fsst.git
+[submodule "ssb"]
+	path = ssb
+	url = https://github.com/dbc-utokyoiis/ssb.git
+	branch = main

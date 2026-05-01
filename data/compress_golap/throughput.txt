@@ -1,0 +1,58 @@
+
+# How to prepare data
+
+- split customer.tbl by 128MB
+
+```
+split -b 128M ../customer.tbl
+```
+
+## Use throughput measurement
+
+```
+git clone https://github.com/NVIDIA/CUDALibrarySamples.git
+git reset --hard 1a44fc256e226e116626e124490c25aea792b68c
+cd CUDALibrarySamples/nvCOMP/benchmarks/ 
+mkdir build
+cd build
+cmake ..
+```
+
+
+## Results of decompression speed
+
+
+- On A100
+
+| Codec   | Decompression throughput [GB/s] |
+| ------- | ------------------------------- |
+| Snappy  | 43.4                            |
+| LZ4     | 32.8                            |
+| Deflate | 19.4                            |
+
+
+```
+~/workspace/CUDALibrarySamples/nvCOMP/benchmarks/build$ ./benchmark_snappy_chunked -f /export/data2/tpch/input10/test/xaa -p 65536 
+----------
+files: 1
+uncompressed (B): 134217728
+comp_size: 75537265, compressed ratio: 1.7768
+compression throughput (GB/s): 6.8545
+decompression throughput (GB/s): 43.5455
+
+~/workspace/CUDALibrarySamples/nvCOMP/benchmarks/build$ ./benchmark_lz4_chunked -f /export/data2/tpch/input10/test/xaa -p 65536 
+----------
+files: 1
+uncompressed (B): 134217728
+comp_size: 75218321, compressed ratio: 1.7844
+compression throughput (GB/s): 6.5938
+decompression throughput (GB/s): 32.8419
+
+~/workspace/CUDALibrarySamples/nvCOMP/benchmarks/build$ ./benchmark_deflate_chunked -f /export/data2/tpch/input10/test/xaa -p 65536 
+----------
+files: 1
+uncompressed (B): 134217728
+comp_size: 61167892, compressed ratio: 2.1943
+compression throughput (GB/s): 4.7339
+decompression throughput (GB/s): 19.4382
+```
